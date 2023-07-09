@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/product_details.dart';
 import '../models/product.dart';
 
 class CartItem extends StatefulWidget {
@@ -13,47 +14,60 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-      footer: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: GridTileBar(
-          backgroundColor: const Color.fromRGBO(255, 255, 255, 0.1),
-          leading: IconButton(
-            icon: (widget.product.isFavorite)
-                ? const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  )
-                : const Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, ProductDetailScreen.routeName,
+            arguments: widget.product);
+      },
+      child: Column(
+        children: [
+          Image.asset(
+            widget.product.imgURL,
+            width: 200,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: const Color.fromRGBO(255, 255, 255, 0.1),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: (widget.product.isFavorite)
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                          color: Color.fromRGBO(208, 255, 0, 1),
+                        ),
+                  onPressed: () {
+                    setState(() {
+                      widget.product.toogleFavorite();
+                    });
+                  },
+                ),
+                Text(
+                  widget.product.title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Color.fromRGBO(208, 255, 0, 1),
                   ),
-            onPressed: () {
-              setState(() {
-                widget.product.toogleFavorite();
-              });
-            },
-          ),
-          title: Text(
-            widget.product.title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 18,
-              color: Colors.white,
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.add_shopping_cart,
+                    color: Color.fromRGBO(208, 255, 0, 1),
+                  ),
+                  onPressed: () {},
+                ),
+              ],
             ),
           ),
-          trailing: IconButton(
-            icon: const Icon(
-              Icons.add_shopping_cart,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
-        ),
-      ),
-      child: Image.asset(
-        widget.product.imgURL,
-        fit: BoxFit.scaleDown,
+        ],
       ),
     );
   }
