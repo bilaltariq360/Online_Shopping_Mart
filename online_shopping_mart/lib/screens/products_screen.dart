@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_drawer.dart';
+import '../dummy_data.dart';
+import '../widgets/cart_item.dart';
 
 class ProductsScreen extends StatelessWidget {
   static const routeName = '/products';
@@ -16,8 +18,18 @@ class ProductsScreen extends StatelessWidget {
         ),
       ),
       drawer: AppDrawer(_scaffoldKey),
-      body: const Center(
-        child: Text('Products screen'),
+      body: Container(
+        color: const Color.fromRGBO(22, 22, 22, 1),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            childAspectRatio: 3 / 2,
+            mainAxisSpacing: 60,
+          ),
+          itemBuilder: (ctx, i) => CartItem(DummyData.products[i]),
+          itemCount: DummyData.products.length,
+        ),
       ),
     );
   }

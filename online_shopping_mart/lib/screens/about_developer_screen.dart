@@ -13,7 +13,7 @@ class AboutDeveloperScreen extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         title: const Text(
-          'Online shopping mart',
+          'About developer',
         ),
       ),
       drawer: AppDrawer(_scaffoldKey),

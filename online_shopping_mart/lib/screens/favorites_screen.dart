@@ -10,10 +10,10 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      //key: _scaffoldKey,
       appBar: AppBar(
         title: const Text(
-          'Online shopping mart',
+          'Favorite products',
         ),
       ),
       drawer: AppDrawer(_scaffoldKey),

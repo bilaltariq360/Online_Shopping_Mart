@@ -52,18 +52,18 @@ class AppDrawer extends StatelessWidget {
                           drawerBuild(
                               'All products', Icons.shopping_bag_outlined, () {
                             _scaffoldKey.currentState?.openEndDrawer();
-                            Navigator.pushNamed(
+                            Navigator.pushReplacementNamed(
                                 context, ProductsScreen.routeName);
                           }),
                           drawerBuild('Favorites', Icons.favorite_outline, () {
                             _scaffoldKey.currentState?.openEndDrawer();
-                            Navigator.pushNamed(
+                            Navigator.pushReplacementNamed(
                                 context, FavoritesScreen.routeName);
                           }),
                           drawerBuild('About developer', Icons.info_outline,
                               () {
                             _scaffoldKey.currentState?.openEndDrawer();
-                            Navigator.pushNamed(
+                            Navigator.pushReplacementNamed(
                                 context, AboutDeveloperScreen.routeName);
                           }),
                           drawerBuild('Close', Icons.close, () {
