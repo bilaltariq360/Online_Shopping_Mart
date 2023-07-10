@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 import './models/product.dart';
 
-class DummyData {
-  static List<Product> products = [
+class ProductsData with ChangeNotifier {
+  List<Product> products = [
     Product(
       title: 'Headphone',
       productDesc:
@@ -46,7 +48,7 @@ class DummyData {
     ),
   ];
 
-  static double get totalPrice {
+  double get totalPrice {
     double total = 0;
     for (var i = 0; i < products.length; i++) {
       total += products[i].price * products[i].quantity;

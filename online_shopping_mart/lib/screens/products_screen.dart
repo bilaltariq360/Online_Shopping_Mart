@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
-import '../dummy_data.dart';
+import '../products_data.dart';
 import '../widgets/cart_item.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class ProductsScreen extends StatelessWidget {
   ProductsScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<ProductsData>(context);
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -27,8 +29,13 @@ class ProductsScreen extends StatelessWidget {
             childAspectRatio: 3 / 2,
             mainAxisSpacing: 50,
           ),
-          itemBuilder: (ctx, i) => CartItem(DummyData.products[i]),
-          itemCount: DummyData.products.length,
+          itemBuilder: (ctx, i) {
+            return ChangeNotifierProvider.value(
+              value: products.products[i],
+              child: CartItem(),
+            );
+          },
+          itemCount: products.products.length,
         ),
       ),
     );

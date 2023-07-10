@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_shopping_mart/dummy_data.dart';
 import '../models/product.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   static const routeName = '/product-details';
-  ProductDetailScreen({super.key});
 
   @override
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
@@ -15,7 +13,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Widget build(BuildContext context) {
     final product = ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
-      //key: _scaffoldKey,
       appBar: AppBar(
         title: const Text(
           'Products details',
@@ -28,7 +25,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: const EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -41,7 +38,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                     Text(
-                      '\$${DummyData.totalPrice.toStringAsFixed(2)}',
+                      '\$${product.totalPrice.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

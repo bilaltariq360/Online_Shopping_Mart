@@ -1,4 +1,6 @@
-class Product {
+import 'package:flutter/material.dart';
+
+class Product with ChangeNotifier {
   final String id = DateTime.now().toString();
   final String title;
   final String productDesc;
@@ -16,15 +18,20 @@ class Product {
     this.isFavorite = false,
   });
 
-  void toogleFavorite() {
-    isFavorite = !isFavorite;
-  }
-
   void increaseQuantity() {
     quantity += 1;
   }
 
   void decreaseQuantity() {
     if (quantity > 0) quantity -= 1;
+  }
+
+  void toogleFavorite(String id) {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
+
+  double get totalPrice {
+    return quantity * price;
   }
 }

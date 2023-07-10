@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../screens/product_details.dart';
 import '../models/product.dart';
 
-class CartItem extends StatefulWidget {
-  Product product;
-
-  CartItem(this.product, {super.key});
-
-  @override
-  State<CartItem> createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
+class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context, listen: false);
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, ProductDetailScreen.routeName,
-            arguments: widget.product);
+            arguments: product);
       },
       child: Column(
         children: [
           Image.asset(
-            widget.product.imgURL,
+            product.imgURL,
             width: 200,
           ),
           Container(
@@ -33,24 +26,24 @@ class _CartItemState extends State<CartItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  icon: (widget.product.isFavorite)
-                      ? const Icon(
-                          Icons.favorite,
-                          color: Colors.red,
-                        )
-                      : const Icon(
-                          Icons.favorite_border,
-                          color: Color.fromRGBO(208, 255, 0, 1),
-                        ),
-                  onPressed: () {
-                    setState(() {
-                      widget.product.toogleFavorite();
-                    });
-                  },
+                Consumer<Product>(
+                  builder: (context, value, child) => IconButton(
+                    icon: (product.isFavorite)
+                        ? const Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          )
+                        : const Icon(
+                            Icons.favorite_border,
+                            color: Color.fromRGBO(208, 255, 0, 1),
+                          ),
+                    onPressed: () {
+                      product.toogleFavorite(product.id);
+                    },
+                  ),
                 ),
                 Text(
-                  widget.product.title,
+                  product.title,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 18,
