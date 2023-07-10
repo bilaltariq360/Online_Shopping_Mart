@@ -38,7 +38,7 @@ class CartItem extends StatelessWidget {
                             color: Color.fromRGBO(208, 255, 0, 1),
                           ),
                     onPressed: () {
-                      product.toogleFavorite(product.id);
+                      product.toogleFavorite();
                     },
                   ),
                 ),
@@ -50,12 +50,25 @@ class CartItem extends StatelessWidget {
                     color: Color.fromRGBO(208, 255, 0, 1),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.add_shopping_cart,
-                    color: Color.fromRGBO(208, 255, 0, 1),
+                Consumer<Product>(
+                  builder: (context, value, child) => IconButton(
+                    icon: (product.quantity == 0)
+                        ? const Icon(
+                            Icons.add_shopping_cart,
+                            color: Color.fromRGBO(208, 255, 0, 1),
+                          )
+                        : const Icon(
+                            Icons.check,
+                            color: Color.fromRGBO(208, 255, 0, 1),
+                          ),
+                    onPressed: () {
+                      if (product.quantity == 0) {
+                        product.increaseQuantity();
+                      } else if (product.quantity == 1) {
+                        product.decreaseQuantity();
+                      }
+                    },
                   ),
-                  onPressed: () {},
                 ),
               ],
             ),

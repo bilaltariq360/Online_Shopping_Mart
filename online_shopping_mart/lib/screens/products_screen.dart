@@ -18,6 +18,43 @@ class ProductsScreen extends StatelessWidget {
         title: const Text(
           'Online shopping mart',
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Align(
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  const Icon(
+                    Icons.shopping_cart,
+                    size: 25,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 18, bottom: 5),
+                    width: 22,
+                    height: 22,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.red,
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Consumer<ProductsData>(
+                        builder: (context, value, child) => FittedBox(
+                          child: Text(
+                            '${products.getTotalProducts}',
+                            style: const TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       drawer: AppDrawer(_scaffoldKey),
       body: Container(

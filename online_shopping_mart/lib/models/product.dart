@@ -20,13 +20,17 @@ class Product with ChangeNotifier {
 
   void increaseQuantity() {
     quantity += 1;
+    notifyListeners();
   }
 
   void decreaseQuantity() {
-    if (quantity > 0) quantity -= 1;
+    if (quantity > 0) {
+      quantity -= 1;
+      notifyListeners();
+    }
   }
 
-  void toogleFavorite(String id) {
+  void toogleFavorite() {
     isFavorite = !isFavorite;
     notifyListeners();
   }

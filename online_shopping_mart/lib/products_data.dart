@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import './models/product.dart';
 
 class ProductsData with ChangeNotifier {
+  double totalPrice = 0;
+  int totalProducts = 0;
   List<Product> products = [
     Product(
       title: 'Headphone',
@@ -48,11 +50,23 @@ class ProductsData with ChangeNotifier {
     ),
   ];
 
-  double get totalPrice {
-    double total = 0;
+  double get getTotalPrice {
+    totalPrice = 0;
     for (var i = 0; i < products.length; i++) {
-      total += products[i].price * products[i].quantity;
+      totalPrice += products[i].price * products[i].quantity;
     }
-    return total;
+
+    notifyListeners();
+
+    return totalPrice;
+  }
+
+  int get getTotalProducts {
+    totalProducts = 0;
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].quantity > 0) totalProducts += 1;
+    }
+    notifyListeners();
+    return totalProducts;
   }
 }

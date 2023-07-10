@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => ProductsData(),
+    return ChangeNotifierProvider.value(
+      value: ProductsData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
