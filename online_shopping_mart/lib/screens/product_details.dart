@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_shopping_mart/products_data.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -100,6 +102,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         setState(() {
                           product.increaseQuantity();
                         });
+                        context.read<ProductsData>().getTotalPrice;
+                        context.read<ProductsData>().getTotalProducts;
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(208, 255, 0,

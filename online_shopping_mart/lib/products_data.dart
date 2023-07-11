@@ -66,7 +66,16 @@ class ProductsData with ChangeNotifier {
     for (var i = 0; i < products.length; i++) {
       if (products[i].quantity > 0) totalProducts += 1;
     }
+
     notifyListeners();
+
     return totalProducts;
+  }
+
+  int getProductIndex(String id) {
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].id == id) return i;
+    }
+    return -1;
   }
 }

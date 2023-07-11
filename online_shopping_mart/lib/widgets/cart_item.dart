@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/product_details.dart';
 import '../models/product.dart';
+import '../products_data.dart';
 
 class CartItem extends StatelessWidget {
+  //final ProductsData products;
+
+  //CartItem(this.products);
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
@@ -64,8 +68,12 @@ class CartItem extends StatelessWidget {
                     onPressed: () {
                       if (product.quantity == 0) {
                         product.increaseQuantity();
+                        context.read<ProductsData>().getTotalProducts;
+                        context.read<ProductsData>().getTotalPrice;
                       } else if (product.quantity == 1) {
                         product.decreaseQuantity();
+                        context.read<ProductsData>().getTotalProducts;
+                        context.read<ProductsData>().getTotalPrice;
                       }
                     },
                   ),

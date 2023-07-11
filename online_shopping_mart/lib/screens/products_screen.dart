@@ -39,13 +39,11 @@ class ProductsScreen extends StatelessWidget {
                     ),
                     child: Align(
                       alignment: Alignment.center,
-                      child: Consumer<ProductsData>(
-                        builder: (context, value, child) => FittedBox(
-                          child: Text(
-                            '${products.getTotalProducts}',
-                            style: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
-                          ),
+                      child: FittedBox(
+                        child: Text(
+                          '${context.read<ProductsData>().getTotalProducts}',
+                          style: const TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -59,20 +57,50 @@ class ProductsScreen extends StatelessWidget {
       drawer: AppDrawer(_scaffoldKey),
       body: Container(
         color: const Color.fromRGBO(22, 22, 22, 1),
-        child: GridView.builder(
-          padding: const EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-            childAspectRatio: 3 / 2,
-            mainAxisSpacing: 50,
-          ),
-          itemBuilder: (ctx, i) {
-            return ChangeNotifierProvider.value(
-              value: products.products[i],
-              child: CartItem(),
-            );
-          },
-          itemCount: products.products.length,
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Total price',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(208, 255, 0, 1),
+                    ),
+                  ),
+                  Text(
+                    "\$${context.read<ProductsData>().getTotalPrice.toStringAsFixed(2)}",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(208, 255, 0, 1),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 3 / 2,
+                  mainAxisSpacing: 50,
+                ),
+                itemBuilder: (ctx, i) {
+                  return ChangeNotifierProvider.value(
+                    value: products.products[i],
+                    child: CartItem(),
+                  );
+                },
+                itemCount: products.products.length,
+              ),
+            ),
+          ],
         ),
       ),
     );
