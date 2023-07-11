@@ -30,9 +30,10 @@ class Product with ChangeNotifier {
     }
   }
 
-  void toogleFavorite() {
+  bool toogleFavorite() {
     isFavorite = !isFavorite;
     notifyListeners();
+    return isFavorite;
   }
 
   double get totalPrice {

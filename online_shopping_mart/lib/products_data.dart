@@ -5,6 +5,7 @@ import './models/product.dart';
 class ProductsData with ChangeNotifier {
   double totalPrice = 0;
   int totalProducts = 0;
+  List<Product> favProducts = [];
   List<Product> products = [
     Product(
       title: 'Headphone',
@@ -72,10 +73,17 @@ class ProductsData with ChangeNotifier {
     return totalProducts;
   }
 
-  int getProductIndex(String id) {
+  void addFavProduct(String id) {
     for (var i = 0; i < products.length; i++) {
-      if (products[i].id == id) return i;
+      if (products[i].id == id) {
+        favProducts.add(products[i]);
+      }
     }
-    return -1;
+  }
+
+  void removeFavProduct(String id) {
+    favProducts.removeWhere((product) {
+      return product.id == id;
+    });
   }
 }

@@ -42,7 +42,13 @@ class CartItem extends StatelessWidget {
                             color: Color.fromRGBO(208, 255, 0, 1),
                           ),
                     onPressed: () {
-                      product.toogleFavorite();
+                      if (product.toogleFavorite()) {
+                        context.read<ProductsData>().addFavProduct(product.id);
+                      } else {
+                        context
+                            .read<ProductsData>()
+                            .removeFavProduct(product.id);
+                      }
                     },
                   ),
                 ),

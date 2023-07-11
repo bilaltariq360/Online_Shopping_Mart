@@ -70,6 +70,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         setState(() {
                           product.decreaseQuantity();
                         });
+                        context.read<ProductsData>().getTotalPrice;
+                        context.read<ProductsData>().getTotalProducts;
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(208, 255, 0,
