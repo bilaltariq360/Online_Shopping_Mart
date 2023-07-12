@@ -49,6 +49,27 @@ class ProductsData with ChangeNotifier {
       imgURL: 'assets/images/shirt.png',
       price: 45,
     ),
+    Product(
+      title: 'Football',
+      productDesc:
+          'Adidas football gear is designed to help you reach the highest levels of the game. Adidas offers football cleats, gloves, socks, bags, jerseys, practice tees and leather footballs. Adidas has a range of soccer cleats, clothing and gear that includes Predator, X, Nemeziz and COPA.',
+      imgURL: 'assets/images/football.png',
+      price: 10,
+    ),
+    Product(
+      title: 'Shuttle',
+      productDesc:
+          'The badminton shuttlecock (also called shuttle or birdie) is the projectile that is used in badminton. The shuttle makes badminton special and different from the rest of racket sports, where usually a ball is used as a projectile. The shuttlecock is formed by feathers (or a synthetic alternative) that are attached to a rounded cork base. You can find the best badminton shuttlecocks in 2023 on Sports Illustrated.',
+      imgURL: 'assets/images/shuttle.png',
+      price: 0.8,
+    ),
+    Product(
+      title: 'Badminton racket',
+      productDesc:
+          'Badminton is a racket sport where you can play it recreationally on indoor or outdoor courts. Badminton can be played as doubles or individually, and it’s low-impact but still offers a solid full-body workout. You can find the best badminton rackets online at Badminton Warehouse.',
+      imgURL: 'assets/images/racket.png',
+      price: 44.99,
+    ),
   ];
 
   double get getTotalPrice {

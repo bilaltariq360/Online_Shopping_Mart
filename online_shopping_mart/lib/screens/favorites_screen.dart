@@ -24,9 +24,9 @@ class FavoritesScreen extends StatelessWidget {
           ? Container(
               color: const Color.fromRGBO(22, 22, 22, 1),
               width: double.infinity,
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.error_outline,
                     size: 100,
@@ -48,52 +48,20 @@ class FavoritesScreen extends StatelessWidget {
             )
           : Container(
               color: const Color.fromRGBO(22, 22, 22, 1),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Total price',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(208, 255, 0, 1),
-                          ),
-                        ),
-                        Text(
-                          "\$${context.read<ProductsData>().getTotalPrice.toStringAsFixed(2)}",
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(208, 255, 0, 1),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: GridView.builder(
-                      padding: const EdgeInsets.all(10),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        childAspectRatio: 3 / 2,
-                        mainAxisSpacing: 50,
-                      ),
-                      itemBuilder: (ctx, i) {
-                        return ChangeNotifierProvider.value(
-                          value: products.favProducts[i],
-                          child: CartItem(),
-                        );
-                      },
-                      itemCount: products.favProducts.length,
-                    ),
-                  ),
-                ],
+              child: GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 3 / 2,
+                  mainAxisSpacing: 50,
+                ),
+                itemBuilder: (ctx, i) {
+                  return ChangeNotifierProvider.value(
+                    value: products.favProducts[i],
+                    child: CartItem(),
+                  );
+                },
+                itemCount: products.favProducts.length,
               ),
             ),
     );
