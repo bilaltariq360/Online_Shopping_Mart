@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/add_product.dart';
 import '../screens/products_screen.dart';
 import '../screens/favorites_screen.dart';
 import '../screens/about_developer_screen.dart';
@@ -65,6 +66,12 @@ class AppDrawer extends StatelessWidget {
                             _scaffoldKey.currentState?.openEndDrawer();
                             Navigator.pushReplacementNamed(
                                 context, AboutDeveloperScreen.routeName);
+                          }),
+                          drawerBuild('Add product', Icons.add, () {
+                            _scaffoldKey.currentState?.openEndDrawer();
+                            Navigator.pushReplacementNamed(
+                                context, AddProduct.routeName,
+                                arguments: true);
                           }),
                           drawerBuild('Close', Icons.close, () {
                             _scaffoldKey.currentState?.openEndDrawer();

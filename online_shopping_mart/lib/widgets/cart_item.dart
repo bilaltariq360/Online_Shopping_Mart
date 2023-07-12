@@ -5,9 +5,6 @@ import '../models/product.dart';
 import '../products_data.dart';
 
 class CartItem extends StatelessWidget {
-  //final ProductsData products;
-
-  //CartItem(this.products);
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);

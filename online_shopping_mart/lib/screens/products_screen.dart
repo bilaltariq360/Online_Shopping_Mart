@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_shopping_mart/screens/add_product.dart';
 import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
 import '../products_data.dart';
@@ -14,6 +15,17 @@ class ProductsScreen extends StatelessWidget {
     final products = Provider.of<ProductsData>(context);
     return Scaffold(
       key: _scaffoldKey,
+      floatingActionButton: InkWell(
+        onTap: () => Navigator.of(context)
+            .pushNamed(AddProduct.routeName, arguments: false),
+        child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color.fromRGBO(208, 255, 0, 1),
+            ),
+            padding: const EdgeInsets.all(15),
+            child: const Icon(Icons.add)),
+      ),
       appBar: AppBar(
         title: const Text(
           'Online shopping mart',

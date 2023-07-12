@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './products_screen.dart';
 import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
 import '../products_data.dart';
@@ -14,6 +15,17 @@ class FavoritesScreen extends StatelessWidget {
     final products = Provider.of<ProductsData>(context);
     return Scaffold(
       key: _scaffoldKey,
+      floatingActionButton: InkWell(
+        onTap: () => Navigator.of(context)
+            .pushReplacementNamed(ProductsScreen.routeName),
+        child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color.fromRGBO(208, 255, 0, 1),
+            ),
+            padding: const EdgeInsets.all(15),
+            child: const Icon(Icons.add_to_home_screen)),
+      ),
       appBar: AppBar(
         title: const Text(
           'Favorites',

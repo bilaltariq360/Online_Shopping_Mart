@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_shopping_mart/products_data.dart';
-import 'package:online_shopping_mart/screens/about_developer_screen.dart';
+import '../products_data.dart';
+import '../screens/about_developer_screen.dart';
+import '../screens/add_product.dart';
 import './screens/products_screen.dart';
 import './screens/favorites_screen.dart';
 import './screens/product_details.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         FavoritesScreen.routeName: (context) => FavoritesScreen(),
         AboutDeveloperScreen.routeName: (context) => AboutDeveloperScreen(),
         ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
+        AddProduct.routeName: (context) => AddProduct(),
       },
     );
   }
