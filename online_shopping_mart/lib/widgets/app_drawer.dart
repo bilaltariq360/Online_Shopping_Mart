@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_shopping_mart/screens/login_screen.dart';
 import '../screens/add_product.dart';
 import '../screens/products_screen.dart';
 import '../screens/favorites_screen.dart';
@@ -72,6 +73,11 @@ class AppDrawer extends StatelessWidget {
                             Navigator.pushReplacementNamed(
                                 context, AddProduct.routeName,
                                 arguments: true);
+                          }),
+                          drawerBuild('Logout', Icons.logout_outlined, () {
+                            _scaffoldKey.currentState?.openEndDrawer();
+                            Navigator.of(context)
+                                .pushReplacementNamed(LoginScreen.routeName);
                           }),
                           drawerBuild('Close', Icons.close, () {
                             _scaffoldKey.currentState?.openEndDrawer();

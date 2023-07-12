@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/login_screen.dart';
 import '../products_data.dart';
 import '../screens/about_developer_screen.dart';
 import '../screens/add_product.dart';
@@ -42,8 +43,9 @@ class MyApp extends StatelessWidget {
         }),
         fontFamily: 'Poppins',
       ),
-      home: ProductsScreen(),
+      home: LoginScreen(),
       routes: {
+        LoginScreen.routeName: (context) => LoginScreen(),
         ProductsScreen.routeName: (context) => ProductsScreen(),
         FavoritesScreen.routeName: (context) => FavoritesScreen(),
         AboutDeveloperScreen.routeName: (context) => AboutDeveloperScreen(),
